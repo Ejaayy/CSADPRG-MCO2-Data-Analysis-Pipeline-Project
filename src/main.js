@@ -48,7 +48,7 @@ while(loop) {
 
             // Process & clean data (filter + compute fields)
             processed = processData(records); //method from dataProcessor.js
-            console.log(`${processed.length.toLocaleString()} rows filtered for (2021–2023)\n`);
+
             break;
 
         case "2":
@@ -60,6 +60,12 @@ while(loop) {
             }
         
             // call report functions
+
+            console.log("Generate Reports...");
+            console.log("Outputs saved to individual files...\n")
+            console.log("Report 1: Regional Flood Mitigation Efficiency Summary\n")
+            console.log("(Filtered: 2021-2023 Projects)\n")
+
             generateReport1(processed);
             generateReport2(processed);
             generateReport3(processed);

@@ -75,10 +75,9 @@ export function processData(data) {
         );
 
     // Log total cleaned rows for visibility
-    console.log(` leaned ${cleaned.length.toLocaleString()} rows (2021–2023 only).`);
+    console.log(`cleaned ${cleaned.length.toLocaleString()} rows (2021–2023 only).\n`);
 
-    // Preview one sample record for debugging
-    console.log("Sample cleaned record:", cleaned[0]);
+
 
     return cleaned;
 }
