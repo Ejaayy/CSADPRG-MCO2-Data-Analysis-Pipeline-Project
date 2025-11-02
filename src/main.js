@@ -30,8 +30,8 @@ while(loop) {
 
         case "1":
             // Make sure output folder exists
-            if (!fs.existsSync("./output")) {
-                fs.mkdirSync("./output");
+            if (!fs.existsSync("../output")) {
+                fs.mkdirSync("../output");
             }
 
             //Read the CSV
@@ -63,18 +63,10 @@ while(loop) {
             generateReport1(processed);
             generateReport2(processed);
             generateReport3(processed);
-
-            //generate report 3
-
+            
             //generate summary json
             generateSummary(processed);
-
-            /*
-            REQ-0009
-            Provision to produce a summary.json aggregating key stats across reports (e.g., total
-            number of projects, total number of contractors, total provinces with projects, global
-            average delay, total savings).
-            */
+            
             break
 
         case "0":

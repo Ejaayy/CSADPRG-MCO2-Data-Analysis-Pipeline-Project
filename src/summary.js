@@ -27,7 +27,7 @@ export function generateSummary(processedData) {
     };
     
     // Write to file (pretty-printed with 2-space indentation)
-    fs.writeFileSync("./output/summary.json", JSON.stringify(summary, null, 2));
+    fs.writeFileSync("../output/summary.json", JSON.stringify(summary, null, 2));
     
     console.log("Summary generated successfully!");
     
