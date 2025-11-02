@@ -6,9 +6,14 @@
 import fs from "fs";
 import { parse } from "csv-parse/sync";
 import { processData } from "./dataProcessor.js";
+import { generateReport1 } from "./report1_regionalEfficiency.js";  
+import { generateReport2 } from "./report2_contractorPerformance.js";  
+import { generateReport3 } from "./report3_annualTrends.js";
+import { generateSummary } from "./summary.js"; 
 import promptSync from 'prompt-sync';
 
 let loop = true
+let processed = null;
 
 while(loop) {
 
@@ -42,12 +47,34 @@ while(loop) {
             process.stdout.write(`${records.length.toLocaleString()} rows loaded, `);
 
             // Process & clean data (filter + compute fields)
-            const processed = processData(records); //method from dataProcessor.js
+            processed = processData(records); //method from dataProcessor.js
             console.log(`${processed.length.toLocaleString()} rows filtered for (2021–2023)\n`);
+            break;
 
-            break
         case "2":
 
+            // Check if data is loaded first
+            if (!processed || processed.length === 0) {
+                console.log("Error: Please load the file first (option 1)!\n");
+                break;
+            }
+        
+            // call report functions
+            generateReport1(processed);
+            generateReport2(processed);
+            generateReport3(processed);
+
+            //generate report 3
+
+            //generate summary json
+            generateSummary(processed);
+
+            /*
+            REQ-0009
+            Provision to produce a summary.json aggregating key stats across reports (e.g., total
+            number of projects, total number of contractors, total provinces with projects, global
+            average delay, total savings).
+            */
             break
 
         case "0":
